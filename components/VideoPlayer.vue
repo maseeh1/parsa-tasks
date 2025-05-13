@@ -57,7 +57,6 @@
             </span>
           </button>
           <!-- Volume -->
-
           <button class="w-6">
             <svg
               width="36"

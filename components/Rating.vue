@@ -22,12 +22,14 @@ const averageRating = ref(props.initialRating);
 
 const hoverRating = ref(0);
 
+// check if user has voted before
 onMounted(() => {
   if (localStorage.getItem(localKey)) {
     userHasVoted.value = true;
   }
 });
 
+// create an array based on the maxStars value
 const stars = computed(() =>
   Array.from({ length: props.maxStars }, (_, i) => i + 1)
 );
