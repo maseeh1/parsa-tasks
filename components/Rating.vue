@@ -47,6 +47,7 @@ async function rate(value) {
         body: { rate: value },
       }
     );
+    alert("امتیاز شما ثبت شد");
     if (res?.new_rating) {
       averageRating.value = res.new_rating;
     }
@@ -57,7 +58,7 @@ async function rate(value) {
 </script>
 
 <template>
-  <div class="flex flex-col items-start">
+  <div class="flex flex-col items-start" dir="ltr">
     <div class="flex gap-x-1 m-1">
       <button
         v-for="star in stars"
