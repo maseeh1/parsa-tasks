@@ -13,8 +13,8 @@
     <!-- Custom Controls -->
     <transition name="fade">
       <div
-        v-if="showControls"
         class="absolute bottom-0 left-0 right-0 bg-black/70 text-white p-3 text-sm flex flex-col gap-2"
+        v-if="showControls"
       >
         <!-- Progress Bar -->
         <input
@@ -24,13 +24,23 @@
           step="0.1"
           v-model="currentTime"
           @input="seek"
-          class="w-full accent-red-500"
+          class="w-full hide-thumb accent-red-500 h-1"
         />
 
-        <div class="flex items-center justify-between gap-4">
+        <div class="flex items-center px-3 gap-4">
           <!-- Play/Pause -->
-          <button @click="togglePlay" class="text-xl">
-            <span v-if="isPlaying">⏸</span>
+          <button @click="togglePlay" class="w-6">
+            <span v-if="isPlaying">
+              <svg
+                width="13"
+                height="16"
+                viewBox="0 0 13 16"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M0 0H5V16H0V0ZM8 0H13V16H8V0Z" fill="white" />
+              </svg>
+            </span>
             <span v-else
               ><svg
                 width="13"
@@ -46,13 +56,22 @@
               </svg>
             </span>
           </button>
-
-          <!-- Time -->
-          <span class="whitespace-nowrap">
-            {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
-          </span>
-
           <!-- Volume -->
+
+          <button class="w-6">
+            <svg
+              width="36"
+              height="36"
+              viewBox="0 0 36 36"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8.00024 20.9995H12.0002L17.0002 25.9995V9.99949L12.0002 14.9995H8.00024V20.9995ZM19.0002 13.9995V21.9995C20.4802 21.3195 21.5002 19.7695 21.5002 17.9995C21.5002 16.2595 20.4802 14.7395 19.0002 13.9995ZM19.0002 11.2895C21.8902 12.1495 24.0002 14.8295 24.0002 17.9995C24.0002 21.1695 21.8902 23.8495 19.0002 24.7095V26.7695C23.0102 25.8595 26.0002 22.2795 26.0002 17.9995C26.0002 13.7195 23.0102 10.1395 19.0002 9.22949V11.2895Z"
+                fill="white"
+              />
+            </svg>
+          </button>
           <input
             type="range"
             min="0"
@@ -60,8 +79,13 @@
             step="0.01"
             v-model="volume"
             @input="setVolume"
-            class="w-24"
+            class="w-24 accent-red-500 h-1"
           />
+
+          <!-- Time -->
+          <span class="whitespace-nowrap grow">
+            {{ formatTime(currentTime) }} / {{ formatTime(duration) }}
+          </span>
 
           <!-- Subtitles -->
           <button @click="toggleSubtitles">
@@ -69,7 +93,32 @@
           </button>
 
           <!-- Fullscreen -->
-          <button @click="toggleFullscreen">⛶</button>
+          <button @click="toggleFullscreen">
+            <svg
+              width="37"
+              height="37"
+              viewBox="0 0 37 37"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.6587 16.9785H12.6587V12.9785H16.6587V10.9785H10.6587V16.9785Z"
+                fill="white"
+              />
+              <path
+                d="M20.6584 10.9785V12.9785H24.6584V16.9785H26.6584V10.9785H20.6584Z"
+                fill="white"
+              />
+              <path
+                d="M24.6584 24.9785H20.6584V26.9785H26.6584V20.9785H24.6584V24.9785Z"
+                fill="white"
+              />
+              <path
+                d="M12.6587 20.9785H10.6587V26.9785H16.6587V24.9785H12.6587V20.9785Z"
+                fill="white"
+              />
+            </svg>
+          </button>
         </div>
       </div>
     </transition>
@@ -193,5 +242,37 @@ function showControlsTemporarily() {
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/* Hide the thumb on Webkit browsers (Chrome, Safari) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none; /* Disable interaction */
+}
+
+/* Hide the thumb in Firefox */
+input[type="range"]::-moz-range-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
+}
+
+/* Hide the thumb in IE and Edge */
+input[type="range"]::-ms-thumb {
+  width: 0;
+  height: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  pointer-events: none;
 }
 </style>
