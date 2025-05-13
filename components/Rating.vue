@@ -58,7 +58,7 @@ async function rate(value) {
 
 <template>
   <div class="flex flex-col items-start">
-    <div class="flex">
+    <div class="flex gap-x-1 m-1">
       <button
         v-for="star in stars"
         :key="star"
@@ -67,7 +67,7 @@ async function rate(value) {
         @mouseenter="!userHasVoted && (hoverRating = star)"
         @mouseleave="!userHasVoted && (hoverRating = 0)"
         :class="[
-          'w-8 h-8 transition-colors',
+          'w-full h-full transition-colors',
           userHasVoted ? 'cursor-not-allowed' : 'cursor-pointer',
         ]"
         aria-label="Rate"
