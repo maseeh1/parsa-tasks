@@ -8,10 +8,10 @@
         >Task 1 - Player Page</NuxtLink
       >
       <NuxtLink to="/video-player" class="text-blue-600 hover:underline"
-        >Task 2</NuxtLink
+        >Task 2 - Video Player</NuxtLink
       >
       <NuxtLink to="/rating" class="text-blue-600 hover:underline"
-        >Task 3</NuxtLink
+        >Task 3 - Rating Component</NuxtLink
       >
     </nav>
   </div>
