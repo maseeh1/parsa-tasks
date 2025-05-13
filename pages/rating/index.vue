@@ -9,7 +9,7 @@
     <Rating :initialRating="2" :itemId="1000"></Rating>
     <Rating :initialRating="4" :itemId="2244"></Rating>
     <Rating :initialRating="1" :itemId="1223"></Rating>
-    <Rating :initialRating="5" :itemId="1234"></Rating>
+    <Rating :initialRating="5" :itemId="1204" :max-stars="6"></Rating>
   </div>
 </template>
 

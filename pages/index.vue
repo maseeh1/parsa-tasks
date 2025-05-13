@@ -5,7 +5,7 @@
     <h1 class="text-2xl font-semibold mb-6">Interview Tasks</h1>
     <nav class="space-y-4 flex flex-col">
       <NuxtLink to="/series/kaaenat" class="text-blue-600 hover:underline"
-        >Task 1 - Player Page</NuxtLink
+        >Task 1 - Series Page</NuxtLink
       >
       <NuxtLink to="/video-player" class="text-blue-600 hover:underline"
         >Task 2 - Video Player</NuxtLink
